@@ -50,7 +50,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // for all courses in the Computer Science department.
         // YOUR CODE STARTS HERE
 
-         String sql = "SELECT coursecode, courseDesc FROM Course WHERE dept = 'Computer Science'";
+         String sql = "SELECT coursecode, courseDesc FROM Course WHERE department = 'Computer Science'";
         
 
         // YOUR CODE ENDS HERE
@@ -90,7 +90,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // Part 1: Write a query to add the student Robert Dylan to the student table.
         // YOUR CODE STARTS HERE
 
-       String sql = "INSERT INTO student (fName, lName) VALUES ('Robert', 'Dylan')";
+       String sql = "INSERT INTO Student (fName, lName) VALUES ('Robert', 'Dylan')";
         
 
         // YOUR CODE ENDS HERE
