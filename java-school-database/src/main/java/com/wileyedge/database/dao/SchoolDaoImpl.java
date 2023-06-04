@@ -77,7 +77,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // Name the aggregate field `numStudents`.
         // YOUR CODE STARTS HERE
 
-        String sql = "SELECT c.courseCode, c.courseDesc, COUNT(cs.student_id) AS numStudents " +"FROM course c " +"LEFT JOIN course_student cs ON c.cid = cs.course_id " + "GROUP BY c.courseCode, c.courseDesc";
+        String sql = "SELECT c.courseCode, c.courseDesc, COUNT(cs.student_id) As numStudents FROM course c LEFT JOIN course_student cs ON c.cid = cs.course_id GROUP BY c.courseCode, c.courseDesc";
 
         // YOUR CODE ENDS HERE
         return jdbcTemplate.query(sql, new StudentCountMapper());
@@ -103,7 +103,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // Part 2: Write a query to add Robert Dylan to CS148.
         // YOUR CODE STARTS HERE
 
-        String sql = "INSERT INTO course_student (course_id, student_id) " + "SELECT c.cid, s.sid " + "FROM course c, student s " + "WHERE c.courseCode = 'CS148' AND s.fName = 'Robert' AND s.lName = 'Dylan'";
+        String sql = "INSERT INTO course_student (student_id, course_id) VALUES (7, 1)";
         
         // YOUR CODE ENDS HERE
         jdbcTemplate.update(sql);
