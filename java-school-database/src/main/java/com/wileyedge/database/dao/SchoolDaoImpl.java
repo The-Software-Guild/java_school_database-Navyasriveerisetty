@@ -50,7 +50,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // for all courses in the Computer Science department.
         // YOUR CODE STARTS HERE
 
-         String sql = "SELECT coursecode, coursename FROM Course WHERE department = 'Computer Science'";
+         String sql = "SELECT coursecode, courseDesc FROM Course WHERE dept = 'Computer Science'";
         
 
         // YOUR CODE ENDS HERE
@@ -63,7 +63,7 @@ public class SchoolDaoImpl implements SchoolDao {
         //  Name the aggregate field `teacherCount`.
         // YOUR CODE STARTS HERE
 
-       String sql = "SELECT dept, COUNT(*) AS teacherCount FROM Teacher GROUP BY dept";
+       String sql = "SELECT dept, COUNT(*) AS teacherCount FROM teacher GROUP BY dept";
         
 
         // YOUR CODE ENDS HERE
@@ -126,7 +126,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // Write a query to remove David Mitchell as a teacher.
         // YOUR CODE STARTS HERE
 
-        String sql = "DELETE FROM teacher WHERE tid = 9";
+        String sql = "DELETE FROM teacher WHERE tFName = 'David' AND tLName = 'Mitchell'";
 
         // YOUR CODE ENDS HERE
         jdbcTemplate.update(sql);
