@@ -50,7 +50,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // for all courses in the Computer Science department.
         // YOUR CODE STARTS HERE
 
-         String sql = "SELECT coursecode, courseDesc FROM Course WHERE department = 'Computer Science'";
+         String sql = "SELECT coursecode, courseDesc FROM course WHERE cid IN (SELECT course_id FROM course_student INNER JOIN course ON course_student.course_id = course.cid INNER JOIN teacher ON course.teacherId = teacher.tid WHERE teacher.dept = 'Computer Science')";
         
 
         // YOUR CODE ENDS HERE
@@ -90,7 +90,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // Part 1: Write a query to add the student Robert Dylan to the student table.
         // YOUR CODE STARTS HERE
 
-       String sql = "INSERT INTO Student (fName, lName) VALUES ('Robert', 'Dylan')";
+       String sql = "INSERT INTO student (fName, lName) VALUES ('Robert', 'Dylan')";
         
 
         // YOUR CODE ENDS HERE
@@ -103,7 +103,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // Part 2: Write a query to add Robert Dylan to CS148.
         // YOUR CODE STARTS HERE
 
-        String sql = "INSERT INTO course_student (student_id, course_id) VALUES (7, 1)";
+        String sql = "INSERT INTO course_student (student_id, course_id) " + "SELECT s.sid, c.cid " + "FROM student s, course c " + "WHERE s.fName = 'Robert' AND s.lName = 'Dylan' AND c.courseCode = 'CS148'";
         
         // YOUR CODE ENDS HERE
         jdbcTemplate.update(sql);
