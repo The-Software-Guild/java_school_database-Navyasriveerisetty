@@ -50,7 +50,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // for all courses in the Computer Science department.
         // YOUR CODE STARTS HERE
 
-         String sql = "SELECT coursecode, courseDesc FROM course WHERE cid IN (SELECT course_id FROM course_student INNER JOIN course ON course_student.course_id = course.cid INNER JOIN teacher ON course.teacherId = teacher.tid WHERE teacher.dept = 'Computer Science')";
+         String sql = String sql = "SELECT coursecode, courseDesc FROM course WHERE department = 'Computer Science'";
         
 
         // YOUR CODE ENDS HERE
