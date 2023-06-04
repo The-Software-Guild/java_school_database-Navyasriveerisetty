@@ -50,7 +50,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // for all courses in the Computer Science department.
         // YOUR CODE STARTS HERE
 
-         String sql = "SELECT coursecode, courseDesc FROM course WHERE department = 'Computer Science'";
+         String sql = "SELECT coursecode, courseDesc FROM course WHERE dept = 'Computer Science'";
         
 
         // YOUR CODE ENDS HERE
@@ -114,7 +114,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // Write a query to change the course description for course CS305 to "Advanced Python with Flask".
         // YOUR CODE STARTS HERE
 
-        String sql = "UPDATE course SET courseDesc = 'Advanced Python with Flask' WHERE courseCode = 'CS305'";
+        String sql = "UPDATE course SET courseDesc = '"Advanced Python with Flask"' WHERE courseCode = 'CS305'";
        
 
         // YOUR CODE ENDS HERE
