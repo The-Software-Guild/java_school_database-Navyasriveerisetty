@@ -114,7 +114,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // Write a query to change the course description for course CS305 to "Advanced Python with Flask".
         // YOUR CODE STARTS HERE
 
-        String sql = "UPDATE course SET courseDesc = '"Advanced Python with Flask"' WHERE courseCode = 'CS305'";
+        String sql = "UPDATE course SET courseDesc = 'Advanced Python with Flask' WHERE courseCode = 'CS305'";
        
 
         // YOUR CODE ENDS HERE
