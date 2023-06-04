@@ -36,7 +36,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // sorted by last name.
         // YOUR CODE STARTS HERE
 
-        String sql = "SELECT first_name, last_name FROM Student ORDER BY last_name";
+        String sql = "SELECT fName, lName FROM Student ORDER BY lName";
         
 
         // YOUR CODE ENDS HERE
@@ -50,7 +50,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // for all courses in the Computer Science department.
         // YOUR CODE STARTS HERE
 
-         String sql = "SELECT course_code, course_name FROM Course WHERE department = 'Computer Science'";
+         String sql = "SELECT coursecode, coursename FROM Course WHERE department = 'Computer Science'";
         
 
         // YOUR CODE ENDS HERE
@@ -63,7 +63,7 @@ public class SchoolDaoImpl implements SchoolDao {
         //  Name the aggregate field `teacherCount`.
         // YOUR CODE STARTS HERE
 
-       String sql = "SELECT department, COUNT(*) AS teacherCount FROM Teacher GROUP BY department";
+       String sql = "SELECT dept, COUNT(*) AS teacherCount FROM Teacher GROUP BY dept";
         
 
         // YOUR CODE ENDS HERE
@@ -77,10 +77,10 @@ public class SchoolDaoImpl implements SchoolDao {
         // Name the aggregate field `numStudents`.
         // YOUR CODE STARTS HERE
 
-        String sql = "SELECT c.course_code, c.course_description, COUNT(cs.student_id) AS numStudents " +
-                "FROM Course c " +
-                "LEFT JOIN Course_Student cs ON c.course_id = cs.course_id " +
-                "GROUP BY c.course_id";
+        String sql = "SELECT c.courseCode, c.courseDesc, COUNT(cs.student_id) AS numStudents " +
+                "FROM course c " +
+                "LEFT JOIN course_student cs ON c.cid = cs.course_id " +
+                "GROUP BY c.cid";
 
         // YOUR CODE ENDS HERE
         return jdbcTemplate.query(sql, new StudentCountMapper());
@@ -93,7 +93,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // Part 1: Write a query to add the student Robert Dylan to the student table.
         // YOUR CODE STARTS HERE
 
-       String sql = "INSERT INTO Student (first_name, last_name) VALUES ('Robert', 'Dylan')";
+       String sql = "INSERT INTO student (fName, lName) VALUES ('Robert', 'Dylan')";
         
 
         // YOUR CODE ENDS HERE
@@ -106,11 +106,10 @@ public class SchoolDaoImpl implements SchoolDao {
         // Part 2: Write a query to add Robert Dylan to CS148.
         // YOUR CODE STARTS HERE
 
-        String sql = "INSERT INTO Course_Student (course_id, student_id) " +
-                "SELECT c.course_id, s.sid " +
-                "FROM Course c, Student s " +
-                "WHERE c.course_code = 'CS148' AND s.first_name = 'Robert' AND s.last_name = 'Dylan'";
-
+        String sql = "INSERT INTO course_student (course_id, student_id) " +
+                "SELECT c.cid, s.sid " +
+                "FROM course c, student s " +
+                "WHERE c.courseCode = 'CS148' AND s.fName = 'Robert' AND s.lName = 'Dylan'";
         // YOUR CODE ENDS HERE
         jdbcTemplate.update(sql);
     }
@@ -120,7 +119,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // Write a query to change the course description for course CS305 to "Advanced Python with Flask".
         // YOUR CODE STARTS HERE
 
-        String sql = "UPDATE Course SET course_description = 'Advanced Python with Flask' WHERE course_code = 'CS305'";
+        String sql = "UPDATE course SET courseDesc = 'Advanced Python with Flask' WHERE courseCode = 'CS305'";
         jdbcTemplate.update(sql);;
 
         // YOUR CODE ENDS HERE
@@ -132,7 +131,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // Write a query to remove David Mitchell as a teacher.
         // YOUR CODE STARTS HERE
 
-        String sql = "DELETE FROM Teacher WHERE teacher_id = 12345";
+        String sql = "DELETE FROM teacher WHERE tid = 9";
 
         // YOUR CODE ENDS HERE
         jdbcTemplate.update(sql);
