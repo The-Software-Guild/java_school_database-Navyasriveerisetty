@@ -50,9 +50,9 @@ public class SchoolDaoImpl implements SchoolDao {
         // for all courses in the Computer Science department.
         // YOUR CODE STARTS HERE
 
-         String sql = "SELECT coursecode, courseDesc FROM course WHERE dept = 'Computer Science'";
-        
+         String sql = "SELECT coursecode, courseDesc FROM course WHERE teacherId IN (SELECT tid FROM teacher WHERE dept = 'Computer Science')";
 
+        
         // YOUR CODE ENDS HERE
         return jdbcTemplate.query(sql, new CourseMapper());
     }
